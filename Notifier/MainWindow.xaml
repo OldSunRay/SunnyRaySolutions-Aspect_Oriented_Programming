@@ -1,0 +1,42 @@
+﻿<Window x:Name="window" x:Class="Notifier.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Notifier"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="Property Change Notification"
+        Width="525"
+        Height="350"
+        mc:Ignorable="d">
+   <Window.FontSize>24</Window.FontSize>
+   <Grid>
+      <StackPanel x:Name="stackPanel" Orientation="Vertical" Margin="0,10,0,-10">
+         <StackPanel Orientation="Horizontal">
+            <Label>First Name:</Label>
+            <Label Width="381"
+            	BorderThickness="0" Content="{Binding person.FirstName, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"
+				       />
+         </StackPanel>
+         <StackPanel Orientation="Horizontal">
+            <Label>Last Name:</Label>
+            <Label Content="{Binding person.LastName, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" />
+         </StackPanel>
+         <StackPanel Orientation="Horizontal">
+            <Label>Full Name:</Label>
+            <Label Content="{Binding person.FullName, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" />
+         </StackPanel>
+         <WrapPanel Orientation="Horizontal">
+            <Button x:Name="ChangeFirstName"
+				        Margin="5"
+				        Click="ChangeFirstName_Click">
+               Change First Name
+            </Button>
+            <Button x:Name="ChangeLastName"
+				        Margin="5"
+				        Click="ChangeLastName_Click">
+               Change Last Name
+            </Button>
+         </WrapPanel>
+      </StackPanel>
+   </Grid>
+</Window>
